@@ -1,16 +1,28 @@
 const gridContainer = document.querySelector(".grid-container");
 const displayGridSize = document.querySelector(".display");
+let selection = "black";
 
 window.addEventListener("load", createGrid(16));
 
-// Add an event delegation that changes the background color of the grid to black when mousedover
-gridContainer.addEventListener("mouseover", (event) => {
-  let gridTarget = event.target;
-  // If the element moused over has a grid-item class then change the color
-  if (gridTarget.matches(".grid-item")) {
-    gridTarget.style.backgroundColor = "black";
+const selectionDropdown = document.querySelector("#selection-dropdown");
+console.log(selectionDropdown.value);
+
+gridContainer.addEventListener("mouseover", (event) =>
+  changeGridItem(event.target, selectionDropdown.value)
+);
+
+function changeGridItem(target, selection) {
+  if (target.matches(".grid-item")) {
+    if (selection === "black") {
+      target.style.backgroundColor = "black";
+    } else if (selection === "RGB") {
+      target.style.backgroundColor =
+        "#" + Math.floor(Math.random() * 16777215).toString(16);
+    } else {
+      target.style.backgroundColor = "white";
+    }
   }
-});
+}
 
 const range = document.querySelector("#range");
 
