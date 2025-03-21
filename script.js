@@ -27,7 +27,7 @@ function createGrid(gridSize) {
   });
 
   // Set the size of each square in the grid
-  const containerSize = 960;
+  const containerSize = 600;
   let cellSize = containerSize / gridSize;
 
   // For an ixi squares, we need ixi number of sqaures, using a for loop create ixi number of squares
@@ -53,6 +53,7 @@ function changeGridItem(target, selection) {
         "#" + Math.floor(Math.random() * 16777215).toString(16);
     } else if (selection == "erase") {
       target.style.backgroundColor = "white";
+      target.style.opacity = "1";
     } else {
       // For the darkening effect, we can set the initial opacity to 0.5
       if (target.style.backgroundColor === "white") {
